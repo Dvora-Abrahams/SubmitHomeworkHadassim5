@@ -169,7 +169,7 @@ Make sure .gitignore doesn't exclude .mdf files.
 
 
 ### 👤 Author
-Dvora Abrahams – Full Stack .NET Final Project
+Dvora Abrahams
 
 
 
