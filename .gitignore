@@ -262,8 +262,8 @@ ServiceFabricBackup/
 *.rptproj.bak
 
 # SQL Server files
-*.mdf
-*.ldf
+# *.mdf
+# *.ldf
 *.ndf
 
 # Business Intelligence projects
@@ -306,12 +306,12 @@ node_modules/
 *.aps
 
 # Visual Studio LightSwitch build output
-**/*.HTMLClient/GeneratedArtifacts
-**/*.DesktopClient/GeneratedArtifacts
-**/*.DesktopClient/ModelManifest.xml
-**/*.Server/GeneratedArtifacts
-**/*.Server/ModelManifest.xml
-_Pvt_Extensions
+# **/*.HTMLClient/GeneratedArtifacts
+# **/*.DesktopClient/GeneratedArtifacts
+# **/*.DesktopClient/ModelManifest.xml
+# **/*.Server/GeneratedArtifacts
+# **/*.Server/ModelManifest.xml
+# _Pvt_Extensions
 
 # Paket dependency manager
 .paket/paket.exe
