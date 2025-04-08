@@ -85,7 +85,7 @@ Steps:
 ## Part 3
 # Theoretical Questions 
 
-This part contains a PDF titled `חלק ג.pdf`, which includes a set of theoretical and analytical questions, written in Hebrew.
+This part contains a PDF titled ` part3.pdf`, which includes a set of theoretical and analytical questions, written in Hebrew.
 
 ---
 
