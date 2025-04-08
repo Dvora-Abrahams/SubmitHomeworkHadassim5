@@ -52,10 +52,7 @@ Tasks:
 ### 🛠️ How to Run
 
 1. Make sure you have Python 3.x and Jupyter installed.
-2. Install required packages:
-
-```bash
-pip install pandas matplotlib pyarrow openpyxl
+2. Install required packages: pip install pandas matplotlib pyarrow openpyxl
 3. Open the notebook: jupyter notebook part1.ipynb
 4. Run each cell to see the full results.
 
