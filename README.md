@@ -1,7 +1,7 @@
 # submitHomeworkHadassim5
 ## Part 1
 ###  Log & Time Series Analysis 
-#### 📁 Files
+####  Files
 
 - `part1.ipynb` – Main notebook containing all code and explanations.
 - `logs.txt` – Large raw log file (millions of lines).
@@ -9,9 +9,9 @@
 - `time_series.parquet`, `time_series.xlsx` – Outputs of time-series data.
 - `time_series.csv` – CSV file containing timestamped numerical values.
 
-### 🧠 What This Project Does
+###  What This Project Does
 
-#### 🔹 Section A – Log Error Analysis
+#### Section A – Log Error Analysis
 
 - Input: A huge log file `logs.txt`, each line represents a log entry with an error code.
 - Goal: Identify the top N most frequent error codes.
@@ -25,7 +25,7 @@ Tasks:
 
 ---
 
-#### 🔹 Section B – Time-Series Aggregation
+#### Section B – Time-Series Aggregation
 
 - Input: `time_series.csv` with two columns: `Timestamp` and `Value`.
 
@@ -40,7 +40,7 @@ Tasks:
 
 ---
 
-### 📊 Output Includes
+###  Output Includes
 
 - Table of most frequent error codes (Section A)
 - Hourly average value table (Section B)
@@ -49,7 +49,7 @@ Tasks:
 
 ---
 
-### 🛠️ How to Run
+###  How to Run
 
 1. Make sure you have Python 3.x and Jupyter installed.
 2. Install required packages: pip install pandas matplotlib pyarrow openpyxl
@@ -60,13 +60,13 @@ Tasks:
 ### SQL Exercises – Family Relationships 
 
 This project includes a set of SQL scripts that deal with modeling and querying family relationships using relational tables.
-### 📁 Files
+###  Files
 
 - `person.sql` – Contains a list of people to be used in the family tree.
 - `familyTies.sql` – Sets up a family relationships table with directional links between individuals.
 - `exe2.sql` – Contains logic to complete missing relationship entries .
 
-### 🛠️ How to Run
+###  How to Run
 
 Use SQL Server Management Studio (SSMS) or MySQL Server.
 
@@ -75,7 +75,7 @@ Steps:
 2. Run `familyTies.sql` to add the relationship table and insert connections.
 3. Run `exe2.sql` to complete or fix missing mutual partner links.
 
-### 🧪 Notes
+###  Notes
 
 - Make sure your database allows inserting into the same table you're selecting from.
 - Consider using `NOT EXISTS` or `EXCEPT` to detect missing links.
@@ -89,7 +89,7 @@ This part contains a PDF titled `חלק ג.pdf`, which includes a set of theoret
 
 ---
 
-## 📚 Topics Covered
+##  Topics Covered
 
 - Personal interest in system design, electronics, and integration
 - Evaluation of motivation (1–6 scale)
@@ -104,26 +104,26 @@ This part contains a PDF titled `חלק ג.pdf`, which includes a set of theoret
 ## part4:
 ### Grocery Management System – Full Stack ASP.NET Project
 This is a full-stack project for managing queues between customers and suppliers, built in C# using ASP.NET Core Web API, with a local SQL Server database (`.mdf` file).
-#### 📁 Project Structure:
-part4/ ├── BLL/ # Business Logic Layer ├── API
-                                       ├── Models
-                                       ├── Sevices
-       ├── DAL/ # Data Access Layer │ └── Database/ # Local database (groceryDatabase.mdf)
-                                      ├── API
-                                      ├── Models
-                                      ├── Sevices
-                                      ├── Migrations
-       ├── WebAPI/ # API controllers ├── GroceryProject.sln # Solution file
-                                     ├── appsettings.json # Configuration file
-                                     ├── wwwroot
-## 🎯 Project Goals
+####  Project Structure:
+####### part4/ ├── BLL/ # Business Logic Layer ├── API
+#######                                        ├── Models
+#######                                        ├── Sevices
+#######       ├── DAL/ # Data Access Layer │ └── Database/ # Local database (groceryDatabase.mdf)
+#######                                       ├── API
+#######                                       ├── Models
+#######                                       ├── Sevices
+#######                                       ├── Migrations
+#######       ├── WebAPI/ # API controllers ├── GroceryProject.sln # Solution file
+#######                                     ├── appsettings.json # Configuration file
+#######                                     ├── wwwroot
+##  Project Goals
 
 - Manage queues between grocery and suppliers
 - Provide a RESTful API for CRUD operations on grocery, suppliers, and appointments
 - Store and retrieve data using a local `.mdf` SQL Server database
 - Follow a layered architecture: DAL, BLL, WebAPI
 
-### 🛠️ Getting Started
+###  Getting Started
 
 #### 1. Prerequisites
 
@@ -150,14 +150,14 @@ In `appsettings.json`, ensure the following connection string exists:
   "GroceryConnection": "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DAL\\Database\\groceryDatabase.mdf;Integrated Security=True"
 }
 
-#### 🚀 Running the Project
+####  Running the Project
 In Visual Studio, set the WebAPI project as the Startup Project.
 
 Press F5 or click "Start Debugging".
 
 Your browser will open with Swagger UI, where you can test the API.
 
-### 🧪 Troubleshooting
+###  Troubleshooting
 #### Database file doesn't load?
 Check that groceryDatabase.mdf exists under DAL/Database.
 
