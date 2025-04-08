@@ -145,7 +145,7 @@ If the `Database` folder is missing from Git, create it manually and place the `
 
 In `appsettings.json`, ensure the following connection string exists:
 
-```json
+
 "ConnectionStrings": {
   "GroceryConnection": "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DAL\\Database\\groceryDatabase.mdf;Integrated Security=True"
 }
