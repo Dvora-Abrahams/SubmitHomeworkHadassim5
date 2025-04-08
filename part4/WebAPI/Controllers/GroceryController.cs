@@ -9,7 +9,6 @@ namespace WebAPI.Controllers;
 public class GroceryController : ControllerBase
 {
     
-    //private readonly ILogger<GroceryController> _logger;
     IOrdersManagment ordersManagment;
 
     public GroceryController( IOrdersManagment _ordersManagment)
@@ -18,7 +17,7 @@ public class GroceryController : ControllerBase
     }
 
     [HttpPost("OrderingGoods")]
-    public async Task<int> CreateOrder([FromBody]string company,[FromQuery] Dictionary<string, int> products)
+    public async Task<ActionResult<int>> CreateOrder([FromBody]string company,[FromQuery] Dictionary<string, int> products)
     {
         //var supplierId= ordersManagment.GetSupplierIdByCompany(company).GetAwaiter().GetResult();
 
@@ -28,8 +27,13 @@ public class GroceryController : ControllerBase
             SupplierId = ordersManagment.GetSupplierIdByCompany(company).GetAwaiter().GetResult().Id
 
         };
+        int orderNum = await ordersManagment.CreateOrder(products, order.Convert());
+        if (orderNum < 0)
+        {
+            return StatusCode(403, "cannt creat order");
+        }
         
-        return await ordersManagment.CreateOrder(products, order.Convert());
+        return Ok(orderNum );
     }
     [HttpPost("OrdeCompletionConfirmation")]
     public Task OrdeCompletionConfirmation([FromBody]int orderNum)
@@ -51,8 +55,8 @@ public class GroceryController : ControllerBase
     }
 
     [HttpGet("ConfirmationReceipOrder")]
-    public async Task ConfirmationReceipOrder(int orderNum)
+    public async Task<IActionResult> ConfirmationReceipOrder(int orderNum)
     {
-         await ordersManagment.ConfirmationReceipOrder(orderNum);
+         return Ok(await ordersManagment.ConfirmationReceipOrder(orderNum));
     }
 }

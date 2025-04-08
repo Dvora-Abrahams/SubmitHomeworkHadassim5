@@ -16,13 +16,13 @@ async function supplierLogin() {
         }
     });
 
-    const isLoggedIn = await response.json(); // מצפים לקבל ערך בוליאני (true או false)
+    const isLoggedIn = await response.json();
 
     if (isLoggedIn) {
-        // שמירת שם החברה ל-localStorage כדי שנוכל להשתמש בו בפונקציות אחרות
+        
         localStorage.setItem("supplierCompany", companyName);
 
-        // מעבר לדף הספק
+        
         window.location.href = "supplier.html";
     } else {
         alert("הכניסה נכשלה, אנא בדוק את הפרטים ונסה שוב");
@@ -40,9 +40,9 @@ async function supplierRegister() {
         return;
     }
     const supplier = {
-        CompanyName = companyName,
-        PhoneNumber=phoneNumber,
-        ContactName=contactName
+        CompanyName : companyName,
+        PhoneNumber: phoneNumber,
+        ContactName: contactName
     }
     const response = await fetch(`${baseUrl}/creatSupplier`, {
         method: 'POST',

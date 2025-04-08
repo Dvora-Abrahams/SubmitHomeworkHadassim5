@@ -63,12 +63,12 @@ function sendOrder() {
     const queryParams = new URLSearchParams();
     queryParams.append("company", company);
 
-    // הוספת המוצרים כ-Query Params
+
     products.forEach(product => {
         queryParams.append(`products[${product.name}]`, product.quantity);
     });
 
-    // שליחה עם ה-Query Params ב-URL
+    
     fetch(`/Grocery/OrderingGoods?${queryParams.toString()}`, {
         method: "POST",
         headers: {

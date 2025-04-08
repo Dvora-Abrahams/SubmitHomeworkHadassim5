@@ -19,9 +19,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("creatSupplier")]
-        public void creatSupplier([FromBody] SuppliersBLL sup)
+        public async Task<IActionResult> creatSupplier([FromBody] SuppliersBLL sup)
         {
-            ordersManagment.creatSupplier(sup.Convert());
+            return Ok(ordersManagment.creatSupplier(sup.Convert()));
         }
 
         [HttpPost("RegisteredSupplier")]
@@ -31,9 +31,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("AddGoodsToSupplier")]
-        public async Task AddGoodsToSupplier(string company, [FromBody]Dictionary<string, float> dict, int n)
+        public async Task<IActionResult> AddGoodsToSupplier(string company, [FromBody]Dictionary<string, float> dict, int n)
         {
-            await ordersManagment.AddGoodsToSupplier(company, dict, n);
+            if (await ordersManagment.AddGoodsToSupplier(company, dict, n) == true)
+                return Ok();
+            return StatusCode(403, "Cannt add good to supplier");
         }
 
         [HttpGet("GetOrderByCompany")]
@@ -51,9 +53,12 @@ namespace WebAPI.Controllers
 
 
         [HttpPut("ConfirmationReceipOrder")]
-        public async Task<bool> ConfirmationReceipOrder(int orderId)
+        public async Task<ActionResult<bool>> ConfirmationReceipOrder(int orderId)
         {
-             return await ordersManagment.ConfirmationReceipOrder(orderId);
+            bool b = await ordersManagment.ConfirmationReceipOrder(orderId);
+            if (b == true)
+                return Ok(b);
+            return StatusCode(404, "cannt Confirmation Receip Order");
         }
 
 

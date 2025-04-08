@@ -26,47 +26,7 @@ namespace BLL.Services
             goodsToOrdersService = _goodsToOrdersService;
             goodsToSupplierService = _goodsToSupplierService;
         }
-        //public async Task<int> CreateOrder(Dictionary<string, int> products, Order order)
-        //{
-        //    double finalPrice = 0;
-        //    List<Good> goods = await goodsToSupplierService.GetGoodsToSupplierBySupplierId(order.SupplierId);
-        //    List<GoodsToOrder> goodsToOrders = new List<GoodsToOrder>();
 
-        //    await ordersService.AddOrder(order);
-
-        //    foreach (var item in products)
-        //    {
-        //        Good g =await goodsService.GetGoodByName(item.Key);
-
-        //        if (g == null) { return -1; }
-        //        if (!goods.Any(x => x.ProductName == g.ProductName))
-        //        {
-        //            throw new Exception("Goods not found in supplier");
-        //        }
-        //        if (item.Value < g.MinimumPurcheQuantity)
-        //        {
-        //            throw new Exception("Quantity is less than minimum purchase quantity");
-        //        }
-        //        finalPrice += g.Price* item.Value;
-        //        GoodsToOrder gto = new GoodsToOrder()
-        //        {
-        //            GoodsId = g.Id,
-        //            OrdersId = order.Id,
-        //            Quantity = item.Value
-
-        //        };
-        //        goodsToOrders.Add(gto);
-        //        await goodsToOrdersService.AddGoodsToOrder(order.Id, g.Id, item.Value);
-
-
-        //    }
-        //    order.GoodsToOrders = goodsToOrders;
-        //    //await ordersService.UpdateOrder(order);
-        //    //await order.SaveChangesAsync();
-        //    //await ordersService.AddOrder(order);
-        //    order.FinalPrice = finalPrice;
-        //    return order.Id;
-        //}
         public async Task<int> CreateOrder(Dictionary<string, int> products, Order order)
         {
             double finalPrice = 0;
@@ -184,24 +144,25 @@ namespace BLL.Services
             Supplier a = await suppliersService.GetSupplierByCompany(company);
             return a;
         }
-        public async Task AddGoodsToSupplier(string company, Dictionary<string, float> goods, int min)
+        public async Task<bool> AddGoodsToSupplier(string company, Dictionary<string, float> goods, int min)
         {
             Supplier supplier = await suppliersService.GetSupplierByCompany(company);
-
+            if(supplier == null) { return false; }
             foreach (var item in goods)
             {
                 //Task<Good>  g = goodsService.GetGoodByName(item.Key);
                 //if (g.GetAwaiter().GetResult() == null)
                 //{
                 Good g = new Good() { ProductName = item.Key, Price = item.Value, MinimumPurcheQuantity = min };
+
                 await goodsService.AddGood(g);
                 
                 Good good = await goodsService.GetGoodByNameAndPrice(item.Key , item.Value);
-               
+                if (good == null) { return false; }
 
                 await goodsToSupplierService.AddGoodsToSupplier(supplier.Id, g.Id);
             }
-
+            return true;
         }
         public async Task<bool> proxyToSuppliers(string company, string phoneNumber)
         {

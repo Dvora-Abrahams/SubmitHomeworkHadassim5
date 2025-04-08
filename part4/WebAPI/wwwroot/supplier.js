@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const section = document.querySelector("section");
 
-    // שדה כמות כללית
+ 
     const quantityInput = document.createElement("input");
     quantityInput.type = "number";
     quantityInput.placeholder = "כמות כללית";
@@ -73,8 +73,8 @@ async function submitProducts() {
         
     }
 
-    // הצגת "LOADING..."
-    document.getElementById("loading").style.display = "block";
+    //// הצגת "LOADING..."
+    //document.getElementById("loading").style.display = "block";
 
     const company = localStorage.getItem("supplierCompany");
     if (!company) {
@@ -90,8 +90,8 @@ async function submitProducts() {
         body: JSON.stringify(goods)
     });
 
-    // הסתרת "LOADING..."
-    document.getElementById("loading").style.display = "none";
+    //// הסתרת "LOADING..."
+    //document.getElementById("loading").style.display = "none";
 
     if (response.ok) {
         alert("המוצרים נוספו בהצלחה!");
@@ -116,7 +116,7 @@ async function getOrders() {
     }
    
     const orders = await response.json();
-
+    
     const ordersList = document.getElementById("ordersList");
     if (ordersList.innerHTML !== "") {
         ordersList.innerHTML = "";
@@ -214,7 +214,7 @@ async function confirmReceipt() {
         return;
     }
 
-    document.getElementById("loading").style.display = "block";
+    //document.getElementById("loading").style.display = "block";
 
     try {
         const response = await fetch(`${baseUrl}/ConfirmationReceipOrder?orderId=${orderId}`, {
@@ -231,7 +231,7 @@ async function confirmReceipt() {
             return;
         }
 
-        const result = await response.json(); // כאן מתקבל ה-boolean
+        const result = await response.json(); 
 
         if (result === true) {
             alert("ההזמנה אושרה בהצלחה!");
@@ -240,7 +240,7 @@ async function confirmReceipt() {
         }
 
     } catch (error) {
-        document.getElementById("loading").style.display = "none";
+        //document.getElementById("loading").style.display = "none";
         alert("שגיאה בעת שליחת הבקשה.");
     }
 }
